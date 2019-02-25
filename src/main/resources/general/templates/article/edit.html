@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8" />
+<title>文章列表</title>
+</head>
+<body>
+	<h2>文章列表</h2>
+	<div>
+		<form action="/admin/article/save" method="post">
+			<input name="id" type="hidden" th:value="${data.id}">
+			<input name="update" type="hidden" th:value="${update}">
+			<div>
+				标题：<input name="title" th:value="${data.title}">
+			</div>
+			<div>
+				唯一标识：<input name="identName" th:value="${data.identName}">
+			</div>
+			<div>
+				内容：<input name="content" th:value="${data.content}">
+			</div>
+			<div>
+				作者：<input name="author" th:value="${data.author}">
+			</div>
+			<div th:if="${error != null}">
+				<th:block th:text="${error}"></th:block>
+			</div>
+			<div>
+				<input value="保存" type="submit">
+			</div>
+		</form>
+	</div>
+</body>
+</html>

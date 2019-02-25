@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8" />
+<title>文章列表</title>
+</head>
+<body>
+	<h2>文章列表</h2>
+	<div>
+		<div>
+			<a href="/admin/article/edit">新增</a>
+		</div>
+		<table border="1">
+			<tr>
+				<th>文章标题</th>
+				<th>文章内容</th>
+				<th>作者</th>
+				<th>创建时间</th>
+				<th>操作</th>
+			</tr>
+			<tr th:each="article : ${data.records}">
+				<td th:text="${article.title}"></td>
+				<td th:text="${article.content}"></td>
+				<td th:text="${article.author}"></td>
+				<td
+					th:text="${#dates.format(article.createTime,'yyyy-MM-dd HH:mm:ss')}"></td>
+				<td><a th:href="@{/admin/article/edit(id=${article.id})}">修改</a><a
+					th:href="@{/admin/article/delete(id=${article.id})}">删除</a></td>
+			</tr>
+		</table>
+	</div>
+</body>
+</html>
